@@ -7,6 +7,7 @@ class QuotesService{
     constructor(){
         console.log("Quotes Service is working");
         this.getQuotes()
+        
     }
     
     async getQuotes(){

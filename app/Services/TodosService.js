@@ -8,22 +8,21 @@ export default class TodosService{
     }   
     async getTodo(){
         try {
-    
-            const res = await geosApi.get('todos')
+        const res = await geosApi.get('todos')
             ProxyState.todos = res.data.map(t => new Todos(t))
         }catch (error) {
             console.error(error)
         }
     }        
     async createTodo(rawTodo){
-        try {
-        const newTodo = await geosApi.post(rawTodo)
-        ProxyState.todos = [ ...ProxyState.todos, newTodo]
         console.log('You created a Todo Post')
+        try {
+        const newTodo = await geosApi.post('todos',rawTodo)
+        ProxyState.todos = [ ...ProxyState.todos, newTodo]
         }catch (error) {
         console.error(error)
        }
-    }  
+    }
     async deleteTodo() {
         try {
         await geosApi.delete('todos')
@@ -33,11 +32,11 @@ export default class TodosService{
         }
     }
     async doneTodo(){
-        let todo = ProxyState.todos.find(t => t.todos == Todos)
-        todo.completed == true ? todo.completed = false : todo.completed = true
+        let found = ProxyState.todos.find(t => t.description == Todos)
+        found.description = !found.description
         try {
-        await geosApi.put('', todo)
-        ProxyState.todos = ProxyState.todos
+            await geosApi.put('description', found)
+            ProxyState.todos = ProxyState.todos
         } catch (error) {
         console.error(error) 
         }

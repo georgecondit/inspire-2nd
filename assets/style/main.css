@@ -5,9 +5,44 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
-.col-height{
+.row{
   height: 100vh;
+}
+.completed{
+  text-decoration: line-through;
+}
+
+.todos{
+  border: 2px solid white;
+  padding: 1em;
+  margin: 1em;
+}
+
+#background-image{
+  background-image: url("img_girl.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.back-shine{
+  text-shadow: 5px  #0000cc;
+}
+.glow {
+  font-size: 80px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  animation: glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #003de6, 0 0 40px #2ee600, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #618f61, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
 }
 
 

@@ -11,37 +11,28 @@
     <title>inspire</title>
 </head>
 
-<body id="background-image" class="container-fluid image-fluid">
-    <div id="app">
-        <main class="row ">
-
-            <div id="weather" class="col-lg-3 col-height text-yellow">
-
-            </div>
-            <div id="quote" class="col-lg-6 text-center">
-
-            </div>
-            <div class="col-lg-3">
-
-                <div class="row text-right">
-                    <div class="col-11 bg-dark text-white ">
-                        <form onsubmit="app.todosController.createTodo(event)">
-                            <input type="text" name="todos" id="todos" placeholder="Make New To-Do" required />
-                            <button class="btn-info" type="submit">ADD</button>
-                        </form>
-                        <div>
-                            <h3>My To-Do List</h3>
-                            <h5>Remaining: <span id="number-todos"></span></h5>
-                        </div>
-
-                    </div>
-                    <div id="todos" class="col-12">
-
-                    </div>
+<body id="background-image" class="container-fluid">
+    <main class="row align-items-end">
+        <div id="weather" class="col-lg-3 pb-5 col-height  text-center text-white glow">
+        </div>
+        <div id="quote" class="col-lg-6 pb-5 text-center text-white glow">
+        </div>
+        <div class="col-lg-3">
+            <div class=" card mb-5">
+                <h3>My To-Do List</h3>
+                <div class="col-11 bg-white text-white ">
+                    <form class="block" onsubmit="app.todosController.createTodo(event)">
+                        <input type="text" name="todos" id="todos" placeholder="Make New To-Do" required />
+                        <button class="btn-info" type="submit">ADD</button>
+                    </form>
                 </div>
-
+                <div col-12 id="list">
+                </div>
+                <div class="col12">
+                    <h5>Remaining: <span id="number-todos"></span></h5>
+                </div>
             </div>
-    </div>
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="app/main.js" type="module"></script>

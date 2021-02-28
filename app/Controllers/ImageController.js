@@ -3,11 +3,11 @@ import { imageService } from "../Services/ImageService.js"
 
 
 function _drawBGImage() {
-    document.body.style.backgroundImage = `url('${ProxyState.images}')`;
+    document.getElementById('background-image').style.backgroundImage = `url('${ProxyState.images}')`;
   
 }
 
-export default class ImageController{
+export default class QuotesController{
 
     constructor(){
         console.log("Image Controller is working")

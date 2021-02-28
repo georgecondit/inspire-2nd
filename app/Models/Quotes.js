@@ -1,17 +1,17 @@
 export default class Quotes{ 
 
 
-    constructor(name, author) {
-        this.name = name,
-        this.author = author
+    constructor(data) {
+        this.author = data.author,
+        this.content = data.content
     }
 
-    getTemplate(){
+    get Template(){
           return /*html*/`
           
-          
-          
-          
+          <h2 class="author">"${this.author}"</h2>
+
+          <h4 class="quip">"${this.content}"</h4>
           `
 
 

@@ -1,25 +1,22 @@
 import Weather from "./Models/Weather.js"
 import Quotes from "./Models/Quotes.js"
-import Image from "./Models/Image.js"
-import Todo from "./Models/Todo.js"
+import Todos from "./Models/Todos.js"
 
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
  
-
   /** @type {Weather} */
   weather = null
 
  /** @type {Quotes} */
   quotes = null
-  
-  images = null
 
+ /** @type {Todos[]} */
+   todos = []
 
- /** @type {Todo[]} */
-   todo = []
+   images = ''
 }
 
 export const ProxyState = new Proxy(new AppState(), {
