@@ -45,6 +45,16 @@
   }
 }
 
+.hide {
+  display: none;
+  transition: ease-in-out;
+}
+    
+.show:hover + .hide {
+  display: contents;
+  color: white;
+  transition: ease-in-out;
+}
 
 :root {
   --blue: blue;

@@ -24,7 +24,7 @@ export default class TodosController{
         let form = event.target
         
         let rawTodo = {
-            
+            todo: form.todos.value,
             description: form.description.value,
             completed: false
         }  
@@ -35,21 +35,21 @@ export default class TodosController{
     }
 
         
-    deleteTodo(){
+    deleteTodo(id){
         if(window.confirm('Are you sure you want to delete this to-do?') == true){
-        todosService.deleteTodo()}
+        todosService.deleteTodo(id)}
     }
 
     doneTodo(event){
         event.preventDefault()
-       const checkbox = document.getElementById("${this.description")
-       this.checkbox = event.target
-         let doneTodo = {
-             description: this.doneTodo,
-             completed: event.target.checked
-         }
-        todosService.doneTodo()
+        let found = ProxyState.todos.find(t => t.id == this.doneTodo)
+        found.doneTodo = !found.doneTodo
+        let checkbox = event.target
+        let doneTodo = {
+            completed: true
+            
+        }
+    
     }
-
     
 }    

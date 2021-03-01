@@ -8,15 +8,17 @@ import { isValidProp } from "./Utils/isValidProp.js"
 class AppState extends EventEmitter {
  
   /** @type {Weather} */
-  weather = null
+   weather = null
 
  /** @type {Quotes} */
-  quotes = null
+   quotes = null
 
  /** @type {Todos[]} */
    todos = []
 
    images = ''
+
+   doneTodos = null
 }
 
 export const ProxyState = new Proxy(new AppState(), {

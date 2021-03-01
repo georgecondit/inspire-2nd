@@ -1,6 +1,7 @@
 import{ geosApi } from "./AxiosService.js"
 import { ProxyState } from "../AppState.js";
 import Todos from "../Models/Todos.js";
+import TodosController from "../Controllers/TodosController.js";
 export default class TodosService{
     constructor(rawTodo){
         console.log("The Todos Service is Working")
@@ -23,22 +24,19 @@ export default class TodosService{
         console.error(error)
        }
     }
-    async deleteTodo() {
+    async deleteTodo(id) {
         try {
-        await geosApi.delete('todos')
+        const res = await geosApi.delete(`todos/${id}`)
         this.getTodo()
         } catch (error) {
         console.error(error)
         }
     }
-    async doneTodo(){
-        let found = ProxyState.todos.find(t => t.description == Todos)
-        found.description = !found.description
+    async doneTodo(id){
         try {
-            await geosApi.put('description', found)
-            ProxyState.todos = ProxyState.todos
-        } catch (error) {
-        console.error(error) 
+            await geosApi.post('true', id)
+        } catch(error) {
+            console.error(error)
         }
     }
 }       
