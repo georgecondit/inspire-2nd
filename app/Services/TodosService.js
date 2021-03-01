@@ -34,7 +34,8 @@ export default class TodosService{
     }
     async doneTodo(id){
         try {
-            await geosApi.post('true', id)
+            const res = await geosApi.doneTodos.post('true', id)
+            ProxyState.doneTodos = ProxyState.doneTodos
         } catch(error) {
             console.error(error)
         }

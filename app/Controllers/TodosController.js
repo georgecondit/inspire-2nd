@@ -1,5 +1,6 @@
 import { todosService } from "../Services/TodosService.js";
 import { ProxyState } from "../AppState.js";
+import Todos from "../Models/Todos.js";
 
 function _drawTodo(){
     let todos = ProxyState.todos
@@ -24,7 +25,7 @@ export default class TodosController{
         let form = event.target
         
         let rawTodo = {
-            todo: form.todos.value,
+            todos: '',
             description: form.description.value,
             completed: false
         }  
@@ -40,13 +41,14 @@ export default class TodosController{
         todosService.deleteTodo(id)}
     }
 
-    doneTodo(event){
-        event.preventDefault()
-        let found = ProxyState.todos.find(t => t.id == this.doneTodo)
+    doneTodo(event,_id){
+        event.preventDefault(event)
+        let found = ProxyState.todos.find(t => t.id == _id)
         found.doneTodo = !found.doneTodo
-        let checkbox = event.target
+        let checkbox = event.target.checked
         let doneTodo = {
-            completed: true
+            completed: true,
+            doneTodo: true
             
         }
     
