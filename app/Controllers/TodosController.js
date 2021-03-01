@@ -14,44 +14,32 @@ function _drawTodo(){
 
 export default class TodosController{
     constructor() {
-        console.log("Todos Controller is working");
+        
         ProxyState.on("todos", _drawTodo)
     }
     
     createTodo(event) {
-
-        console.log("create todo");
         event.preventDefault()        
         let form = event.target
         
         let rawTodo = {
-            
-            description: form.description.value,
-            completed: false
+            description: form.description.value, 
         }  
+        _drawTodo()
         console.log(rawTodo)
     todosService.createTodo(rawTodo);
     form.reset();
-    _drawTodo()
     }
 
-        
+    doneTodo(id){
+        let found = ProxyState.todos.find(t => t.id == id)
+        found.completed = !found.completed
+        ProxyState.completed = ProxyState.completed
+    }
+    
     deleteTodo(id){
         if(window.confirm('Are you sure you want to delete this to-do?') == true){
         todosService.deleteTodo(id)}
     }
 
-    doneTodo(event,_id){
-        event.preventDefault(event)
-        let found = ProxyState.todos.find(t => t.id == _id)
-        found.completed = !found.completed
-        let checkbox = event.target.checked
-        let doneTodo = {
-            completed: true,
-            doneTodo: true
-            
-        }
-    
-    }
-    
 }    

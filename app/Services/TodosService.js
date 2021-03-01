@@ -1,10 +1,10 @@
 import{ geosApi } from "./AxiosService.js"
 import { ProxyState } from "../AppState.js";
 import Todos from "../Models/Todos.js";
-import TodosController from "../Controllers/TodosController.js";
+
 export default class TodosService{
     constructor(rawTodo){
-        console.log("The Todos Service is Working")
+        
         this.getTodo()  
     }   
     async getTodo(){
@@ -14,16 +14,18 @@ export default class TodosService{
         }catch (error) {
             console.error(error)
         }
+
     }        
     async createTodo(rawTodo){
         console.log('You created a Todo Post')
         try {
-        const newTodo = await geosApi.post('todos',rawTodo)
-        ProxyState.todos = [ ...ProxyState.todos, newTodo]
+        const res = await geosApi.post('todos',rawTodo)
+        ProxyState.todos = [ ...ProxyState.todos, new Todos(res.data)]
         }catch (error) {
         console.error(error)
        }
     }
+
     async deleteTodo(id) {
         try {
         const res = await geosApi.delete(`todos/${id}`)
@@ -32,18 +34,20 @@ export default class TodosService{
         console.error(error)
         }
     }
-    async doneTodo(id){
-        let temp = ProxyState.todos
-
-        let todos = temp.find(t => t.id === id)
-        try {
-            const res = await geosApi.doneTodos.post('todos' + id)
-            ProxyState.doneTodos = ProxyState.doneTodos
+    async doneTodo(event, id){
+        event.preventDefault()
+        let checkboxElem = document.getElementById('${this.id}')
+        if(this.doneTodo) {checkboxElem = event.target.checked}
+            try {
+            const res = await geosApi.doneTodos.post('todos' + id, )
+            ProxyState.completed = ProxyState.completed
         } catch(error) {
             console.error(error)
         }
     }
-}       
+        
+    }
+      
 
 
 

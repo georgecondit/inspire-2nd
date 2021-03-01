@@ -1,6 +1,6 @@
 export default class Todos{
 
-    constructor(data){
+    constructor(data,){
         
         this.description = data.description;
         this.id = data.id || data._id,
@@ -12,7 +12,7 @@ export default class Todos{
     get Template(){
         return /*html*/`
         <div class="col-11 offset-1">
-            <p><input id="${this.id}" ${this.completed ? 'checked' : ''} class="form-check-input" type="checkbox" name="${this.description}" onclick="app.todosController.doneTodo('${this.id}')"/>
+            <p><input id="${this.id}" ${this.completed ? '' : 'checked'} class="form-check-input" type="checkbox" name="${this.description}" onclick="app.todosController.doneTodo('${this.id}')"/>
             
             <p>${this.description}
             

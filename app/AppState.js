@@ -18,7 +18,7 @@ class AppState extends EventEmitter {
 
    images = ''
 
-   doneTodos = null
+   completed = null
 }
 
 export const ProxyState = new Proxy(new AppState(), {
