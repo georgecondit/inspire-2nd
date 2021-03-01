@@ -1,6 +1,6 @@
 import { todosService } from "../Services/TodosService.js";
 import { ProxyState } from "../AppState.js";
-import Todos from "../Models/Todos.js";
+
 
 function _drawTodo(){
     let todos = ProxyState.todos
@@ -25,7 +25,7 @@ export default class TodosController{
         let form = event.target
         
         let rawTodo = {
-            todos: '',
+            
             description: form.description.value,
             completed: false
         }  
