@@ -44,7 +44,7 @@ export default class TodosController{
     doneTodo(event,_id){
         event.preventDefault(event)
         let found = ProxyState.todos.find(t => t.id == _id)
-        found.doneTodo = !found.doneTodo
+        found.completed = !found.completed
         let checkbox = event.target.checked
         let doneTodo = {
             completed: true,
